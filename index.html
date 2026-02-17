@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Friendly Copy Box</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    padding: 15px;
+    margin: 0;
+  }
+
+  .box {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: #fafafa;
+    border-radius: 10px;
+  }
+
+  .info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .label {
+    font-size: 13px;
+    color: #666;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  .value {
+    font-size: 15px;
+    word-break: break-all;
+  }
+
+  button {
+    padding: 8px 14px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  button:hover {
+    background: #0056b3;
+  }
+
+  /* 🔥 Mobile Responsive */
+  @media (max-width: 600px) {
+    .row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px;
+      font-size: 15px;
+    }
+
+    .value {
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <div class="row">
+    <div class="info">
+      <div class="label">First Name</div>
+      <div class="value" id="fname">Chris</div>
+    </div>
+    <button onclick="copyText('fname')">Copy</button>
+  </div>
+
+  <div class="row">
+    <div class="info">
+      <div class="label">Last Name</div>
+      <div class="value" id="lname">✖️</div>
+    </div>
+    <button onclick="copyText('lname')">Copy</button>
+  </div>
+
+  <div class="row">
+    <div class="info">
+      <div class="label">Email</div>
+      <div class="value" id="email">ayetatijus61@gmail.com</div>
+    </div>
+    <button onclick="copyText('email')">Copy</button>
+  </div>
+
+  <div class="row">
+    <div class="info">
+      <div class="label">Password</div>
+      <div class="value" id="password">8MpSGk2GcLRQVo</div>
+    </div>
+    <button onclick="copyText('password')">Copy</button>
+  </div>
+
+</div>
+
+<script>
+function copyText(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text)
+    .then(() => alert("Copied: " + text))
+    .catch(() => alert("Copy failed"));
+}
+</script>
+
+</body>
+</html>
